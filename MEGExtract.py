@@ -1,4 +1,5 @@
 import os
+import sys
 
 inputFileName = "MUSIC.MEG"  # edit the filename here to extract other *.MEG files
 
