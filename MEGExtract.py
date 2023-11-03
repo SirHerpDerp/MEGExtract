@@ -24,9 +24,10 @@ for i in range(0, numberOfFiles, 1):  # extract every file
     size = int.from_bytes(metaInfo[currentPosition + 10:currentPosition + 14], byteorder='little')  # metainfo tells us the size of the filestream
     start = int.from_bytes(metaInfo[currentPosition + 14:currentPosition + 18], byteorder='little')  # metainfo tells us where the filestream begins
     index = int.from_bytes(metaInfo[currentPosition + 18:currentPosition + 20], byteorder='little')  # metainfo tells us the associated filename for this stream
-    if not os.path.exists(os.path.dirname(fileNames[index])):  # check whether the path for extraction exists, it will be created otherwise
-        os.makedirs(os.path.dirname(fileNames[index]))
-    output = open(fileNames[index], "wb")
+    path = fileNames[index].replace('\\', os.sep)
+    if not os.path.exists(os.path.dirname(path)):  # check whether the path for extraction exists, it will be created otherwise
+        os.makedirs(os.path.dirname(path))
+    output = open(path, "wb")
     inputFile.seek(start)
     output.write(inputFile.read(size))
     output.close()
