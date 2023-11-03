@@ -2,6 +2,9 @@ import os
 
 inputFileName = "MUSIC.MEG"  # edit the filename here to extract other *.MEG files
 
+if not os.path.exists(inputFileName):
+    print("*** file \'" + inputFileName + "\' does not exist ***")
+    exit()
 inputFile = open(inputFileName, "rb")
 sizeHeader = 24  # fixed header size of 24 bytes
 header = inputFile.read(sizeHeader)
