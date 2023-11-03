@@ -2,6 +2,9 @@ import os
 
 inputFileName = "MUSIC.MEG"  # edit the filename here to extract other *.MEG files
 
+if (len(sys.argv) == 2):
+    inputFileName = sys.argv[1]
+
 if not os.path.exists(inputFileName):
     print("*** file \'" + inputFileName + "\' does not exist ***")
     exit()
